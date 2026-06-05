@@ -9,10 +9,17 @@ export default defineConfig({
   plugins: [inspectAttr(), react()],
   server: {
     port: 3000,
+    proxy: {
+      '/api': {
+        target: 'https://spaak-manage-be.onrender.com',
+        changeOrigin: true,
+      }
+    }
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
 });
